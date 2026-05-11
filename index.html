@@ -240,7 +240,33 @@
   .footer-logo{font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:var(--white);}
   .footer-logo span{color:var(--gold);}
   .footer-sub{font-size:0.74rem;color:var(--muted);margin-bottom:1.5rem;line-height:1.85;}
-  .footer-links{display:flex;gap:1.1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.4rem;}
+  /* .footer-links{display:flex;gap:1.1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.4rem;} */
+ .footer-links{
+  display:flex;
+  gap:1.1rem;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-bottom:1.4rem;
+}
+
+/* move social links to next line */
+.footer-links a:nth-last-child(-n+2){
+  flex: 0 0 auto;
+}
+
+/* create full-width row for socials */
+.footer-links::after{
+  content:"";
+  flex-basis:100%;
+  width:0;
+  order:1;
+}
+
+/* keep insta + facebook together */
+.footer-links a:nth-last-child(2),
+.footer-links a:last-child{
+  order:2;
+}
   .footer-links a{color:var(--muted);text-decoration:none;font-size:0.76rem;transition:color 0.2s;}
   .footer-links a:hover{color:var(--gold);}
   .footer-copy{font-size:0.68rem;color:rgba(138,148,171,0.4);line-height:1.7;}
@@ -992,6 +1018,14 @@ Where students were allowed to elect their representatives for SRC.</p>
     <a href="#story">Our Story</a><a href="#announcements">Announcements</a><a href="#structure">Role & Structure</a>
     <a href="#counsellors">Counsellors</a><a href="#complaints">Submit Complaint</a>
     <a href="#escalation">Escalation Trail</a>
+    <a href="https://www.instagram.com/src.kmuims?igsh=MXI0cXZhdWZqd3M2bw==" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;gap:0.3rem;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;"><rect width="24" height="24" rx="6" fill="#fff" fill-opacity="0.08"/><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm4.25 3.25a5.25 5.25 0 1 1 0 10.5 5.25 5.25 0 0 1 0-10.5zm0 1.5a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5zm5.13.62a1.13 1.13 0 1 1-2.26 0 1.13 1.13 0 0 1 2.26 0z" fill="#e8c96b"/></svg>
+      Instagram
+    </a>
+    <a href="https://www.facebook.com/share/18NDgAjATW/" target="_blank" rel="noopener" aria-label="Facebook" style="display:inline-flex;align-items:center;gap:0.3rem;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;"><rect width="24" height="24" rx="6" fill="#fff" fill-opacity="0.08"/><path d="M17.5 2h-11A4.5 4.5 0 0 0 2 6.5v11A4.5 4.5 0 0 0 6.5 22h11A4.5 4.5 0 0 0 22 17.5v-11A4.5 4.5 0 0 0 17.5 2zm-2.25 7.25h-1.25c-.41 0-.5.2-.5.5v1.25h1.75l-.25 2h-1.5V19h-2.25v-6.25h-1.25v-2h1.25v-1.5c0-1.24.76-2 2-2h1.5v2z" fill="#e8c96b"/></svg>
+      Facebook
+    </a>
   </div>
   <div class="footer-copy">© 2026 Students Representative Council, KMU Institute of Medical Sciences, Kohat. All rights reserved.</div>
 </footer>
