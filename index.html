@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SRC KIMS — Students Representative Council | KMU Institute of Medical Sciences</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root{--navy:#0a1628;--navy-mid:#112244;--navy-light:#1a3566;--gold:#c9a84c;--gold-light:#e8c96b;--white:#f7f8fc;--muted:#8a94ab;--font-display:'Playfair Display',Georgia,serif;--font-body:'DM Sans',sans-serif;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--font-body);background:var(--navy);color:var(--white);overflow-x:hidden;}
+
+  /* NAV */ 
+  nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,22,40,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.18);display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px;}
+  .nav-brand{display:flex;align-items:center;gap:0.75rem;text-decoration:none;}
+  .nav-logo-img{width:38px;height:38px;border-radius:50%;object-fit:contain;}
+  .nav-title{font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--white);}
+  .nav-title span{color:var(--gold);}
+  .nav-links{display:flex;gap:0.1rem;list-style:none;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:0.76rem;font-weight:500;padding:0.32rem 0.55rem;border-radius:6px;transition:color 0.2s,background 0.2s;}
+  .nav-links a:hover{color:var(--gold);background:rgba(201,168,76,0.08);}
+  .nav-cta{background:var(--gold)!important;color:var(--navy)!important;font-weight:600!important;}
+  .nav-cta:hover{background:var(--gold-light)!important;}
+  .hamburger{display:none;background:none;border:none;cursor:pointer;padding:0.4rem;}
+  .hamburger span{display:block;width:22px;height:2px;background:var(--white);margin:4px 0;}
+  @media(max-width:1000px){.nav-links{display:none;}.hamburger{display:block;}}
+
+  /* HERO */
+  .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:7rem 2rem 4rem;position:relative;overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(26,53,102,0.75) 0%,transparent 70%),linear-gradient(180deg,var(--navy) 0%,#0d1e3a 100%);}
+  .hero-grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(201,168,76,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.035) 1px,transparent 1px);background-size:48px 48px;}
+  .hero-content{position:relative;z-index:1;max-width:860px;}
+  .hero-logo{width:110px;height:110px;margin:0 auto 1.75rem;display:block;filter:drop-shadow(0 0 24px rgba(201,168,76,0.3));animation:fadeUp 0.5s ease both;}
+  .hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);color:var(--gold);font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.32rem 0.9rem;border-radius:100px;margin-bottom:1.5rem;animation:fadeUp 0.6s 0.05s ease both;}
+  .hero h1{font-family:var(--font-display);font-size:clamp(2.2rem,5.5vw,4.2rem);font-weight:900;line-height:1.1;color:var(--white);animation:fadeUp 0.7s 0.1s ease both;}
+  .hero h1 em{color:var(--gold);font-style:normal;}
+  .hero-sub{margin-top:1.3rem;font-size:0.97rem;font-weight:300;line-height:1.75;color:#b0bcd4;max-width:640px;margin-left:auto;margin-right:auto;animation:fadeUp 0.7s 0.2s ease both;}
+  .hero-actions{margin-top:2.2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fadeUp 0.7s 0.3s ease both;}
+  .btn-primary{background:var(--gold);color:var(--navy);font-family:var(--font-body);font-weight:600;font-size:0.88rem;padding:0.78rem 1.7rem;border:none;border-radius:8px;cursor:pointer;text-decoration:none;transition:background 0.2s,transform 0.15s;display:inline-flex;align-items:center;gap:0.5rem;}
+  .btn-primary:hover{background:var(--gold-light);transform:translateY(-1px);}
+  .btn-outline{background:transparent;color:var(--white);font-family:var(--font-body);font-weight:500;font-size:0.88rem;padding:0.78rem 1.7rem;border:1px solid rgba(255,255,255,0.2);border-radius:8px;cursor:pointer;text-decoration:none;transition:border-color 0.2s,background 0.2s;display:inline-flex;align-items:center;gap:0.5rem;}
+  .btn-outline:hover{border-color:var(--gold);background:rgba(201,168,76,0.07);}
+  .hero-stats{margin-top:3rem;display:flex;gap:2.5rem;justify-content:center;flex-wrap:wrap;animation:fadeUp 0.7s 0.4s ease both;padding-top:2.2rem;border-top:1px solid rgba(255,255,255,0.06);}
+  .stat{text-align:center;}
+  .stat-num{font-family:var(--font-display);font-size:1.8rem;font-weight:700;color:var(--gold);line-height:1;}
+  .stat-label{font-size:0.68rem;color:var(--muted);margin-top:0.3rem;text-transform:uppercase;letter-spacing:0.08em;}
+
+  /* SHARED */
+  section{padding:5rem 2rem;}
+  .container{max-width:1080px;margin:0 auto;}
+  .section-label{font-size:0.68rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;}
+  .section-title{font-family:var(--font-display);font-size:clamp(1.7rem,3.5vw,2.3rem);font-weight:700;line-height:1.2;color:var(--white);}
+  .section-sub{margin-top:0.6rem;color:var(--muted);font-size:0.88rem;line-height:1.75;max-width:620px;}
+  .divider{width:48px;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:2px;margin:0.9rem 0 2.2rem;}
+
+  /* STORY */
+  #story{background:var(--navy-mid);}
+  .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2.2rem;align-items:start;}
+  @media(max-width:700px){.story-grid{grid-template-columns:1fr;}}
+  .story-text p{font-size:0.88rem;color:#b0bcd4;line-height:1.85;margin-bottom:0.85rem;}
+  .story-text p strong{color:var(--white);}
+  .timeline{margin-top:1.25rem;}
+  .tl-item{display:flex;gap:1rem;padding-bottom:1.6rem;position:relative;}
+  .tl-item:not(:last-child)::after{content:'';position:absolute;left:14px;top:30px;bottom:0;width:1px;background:rgba(201,168,76,0.13);}
+  .tl-dot{width:30px;height:30px;flex-shrink:0;background:var(--navy);border:2px solid rgba(201,168,76,0.28);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.7rem;color:var(--gold);z-index:1;}
+  .tl-dot.key{border-color:var(--gold);background:rgba(201,168,76,0.1);}
+  .tl-date{font-size:0.68rem;color:var(--gold);font-weight:600;margin-bottom:0.18rem;text-transform:uppercase;letter-spacing:0.06em;}
+  .tl-title{font-size:0.86rem;font-weight:600;color:var(--white);margin-bottom:0.18rem;}
+  .tl-body{font-size:0.76rem;color:var(--muted);line-height:1.65;}
+  .tl-body strong{color:#c0c8d8;}
+  .ack-box{background:var(--navy);border:1px solid rgba(201,168,76,0.14);border-radius:14px;padding:1.4rem;margin-top:1rem;}
+  .ack-box h3{font-family:var(--font-display);font-size:0.98rem;color:var(--gold);margin-bottom:0.8rem;}
+  .ack-person{display:flex;gap:0.7rem;align-items:flex-start;padding:0.6rem 0;border-bottom:1px solid rgba(255,255,255,0.04);}
+  .ack-person:last-child{border-bottom:none;}
+  .ack-icon{width:32px;height:32px;flex-shrink:0;border-radius:50%;background:rgba(201,168,76,0.09);border:1px solid rgba(201,168,76,0.2);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:var(--gold);}
+  .ack-name{font-size:0.82rem;font-weight:600;color:var(--white);margin-bottom:0.08rem;}
+  .ack-role{font-size:0.71rem;color:var(--gold);margin-bottom:0.12rem;}
+  .ack-desc{font-size:0.72rem;color:var(--muted);line-height:1.6;}
+  .tribute-box{background:linear-gradient(135deg,rgba(26,53,102,0.4),rgba(10,22,40,0.8));border:1px solid rgba(201,168,76,0.22);border-radius:14px;padding:1.6rem;margin-top:1rem;position:relative;overflow:hidden;}
+  .tribute-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light),var(--gold));}
+  .tribute-box h3{font-family:var(--font-display);font-size:1rem;color:var(--gold);margin-bottom:0.75rem;}
+  .tribute-box p{font-size:0.83rem;color:#b0bcd4;line-height:1.85;}
+  .tribute-box p strong{color:var(--white);}
+  .cr-box{background:var(--navy);border:1px solid rgba(201,168,76,0.13);border-radius:14px;padding:1.4rem;margin-top:1rem;}
+  .cr-box h3{font-family:var(--font-display);font-size:0.98rem;color:var(--gold);margin-bottom:0.5rem;}
+  .cr-box p{font-size:0.8rem;color:#b0bcd4;line-height:1.75;margin-bottom:0.65rem;}
+  .cr-sessions{display:flex;gap:0.85rem;flex-wrap:wrap;margin-top:0.75rem;}
+  .cr-session-tag{background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.16);border-radius:8px;padding:0.45rem 0.9rem;font-size:0.76rem;color:#c0c8d8;font-weight:500;}
+  .cr-session-tag span{color:var(--gold);font-weight:600;}
+
+  /* ANNOUNCEMENTS */
+  #announcements{background:var(--navy);}
+  .notice-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;margin-top:2.2rem;}
+  .notice-card{background:var(--navy-mid);border:1px solid rgba(201,168,76,0.11);border-radius:12px;padding:1.35rem;transition:border-color 0.2s,transform 0.2s;position:relative;overflow:hidden;}
+  .notice-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent);}
+  .notice-card:hover{border-color:rgba(201,168,76,0.28);transform:translateY(-2px);}
+  .notice-tag{display:inline-block;font-size:0.63rem;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;padding:0.14rem 0.5rem;border-radius:4px;margin-bottom:0.6rem;}
+  .tag-official{background:rgba(201,168,76,0.14);color:var(--gold);}
+  .tag-info{background:rgba(26,53,102,0.5);color:#7eb3f5;}
+  .tag-event{background:rgba(26,122,74,0.17);color:#4ade80;}
+  .tag-new{background:rgba(201,168,76,0.2);color:var(--gold);border:1px solid rgba(201,168,76,0.28);}
+  .notice-date{font-size:0.66rem;color:var(--muted);margin-bottom:0.38rem;}
+  .notice-title{font-family:var(--font-display);font-size:0.94rem;font-weight:600;line-height:1.35;color:var(--white);}
+  .notice-body{font-size:0.78rem;color:#8a94ab;margin-top:0.45rem;line-height:1.65;}
+
+  /* STRUCTURE */
+  #structure{background:var(--navy-mid);}
+  .structure-intro{background:var(--navy);border:1px solid rgba(201,168,76,0.13);border-radius:14px;padding:1.6rem;margin-bottom:1.75rem;}
+  .structure-intro p{font-size:0.86rem;color:#b0bcd4;line-height:1.85;margin-bottom:0.7rem;}
+  .structure-intro p:last-child{margin-bottom:0;}
+  .structure-intro p strong{color:var(--white);}
+  .structure-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+  @media(max-width:700px){.structure-grid{grid-template-columns:1fr;}}
+  .structure-card{background:var(--navy);border:1px solid rgba(201,168,76,0.11);border-radius:14px;padding:1.5rem;}
+  .structure-card h3{font-family:var(--font-display);font-size:1rem;color:var(--gold);margin-bottom:0.95rem;}
+  .tor-item{display:flex;gap:0.65rem;align-items:flex-start;padding:0.55rem 0;border-bottom:1px solid rgba(255,255,255,0.04);}
+  .tor-item:last-child{border-bottom:none;}
+  .tor-dot{width:5px;height:5px;flex-shrink:0;border-radius:50%;background:var(--gold);margin-top:7px;}
+  .tor-text strong{display:block;font-size:0.8rem;color:var(--white);margin-bottom:0.07rem;}
+  .tor-text span{font-size:0.73rem;color:var(--muted);line-height:1.6;}
+  .cabinet-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.6rem;margin-bottom:1.1rem;}
+  @media(max-width:480px){.cabinet-cards{grid-template-columns:1fr;}}
+  .cabinet-role{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.13);border-radius:9px;padding:0.8rem;text-align:center;}
+  .cabinet-role .role-title{font-size:0.68rem;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:0.05em;}
+  .cabinet-role .role-name{font-size:0.8rem;font-weight:700;color:var(--white);margin-top:0.18rem;}
+  .cabinet-role .role-desc{font-size:0.65rem;color:var(--muted);margin-top:0.1rem;line-height:1.5;}
+  .committees-grid{display:grid;grid-template-columns:1fr;gap:0.6rem;margin-top:0.8rem;}
+  .committee-chip{background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.11);border-radius:8px;padding:0.48rem 0.7rem;}
+  .committee-chip strong{display:block;font-size:0.76rem;color:var(--white);}
+  .committee-chip span{font-size:0.68rem;color:var(--muted);}
+
+  /* COUNSELLORS */
+  #counsellors{background:var(--navy);}
+  .founder-card{background:linear-gradient(135deg,rgba(26,53,102,0.6),var(--navy-mid));border:1px solid rgba(201,168,76,0.3);border-radius:16px;padding:1.6rem;display:flex;gap:1.3rem;align-items:center;position:relative;overflow:hidden;margin-bottom:2.2rem;}
+  .founder-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light),var(--gold));}
+  .founder-avatar{width:68px;height:68px;flex-shrink:0;border-radius:50%;background:linear-gradient(135deg,var(--navy-light),var(--navy-mid));border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.4rem;font-weight:900;color:var(--gold);box-shadow:0 0 20px rgba(201,168,76,0.18);}
+  .founder-info{flex:1;}
+  .founder-badge{display:inline-flex;align-items:center;background:rgba(201,168,76,0.12);color:var(--gold);font-size:0.63rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:0.14rem 0.55rem;border-radius:100px;margin-bottom:0.4rem;}
+  .founder-name{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--white);}
+  .founder-role{font-size:0.76rem;color:var(--gold);font-weight:500;margin-top:0.15rem;}
+  .founder-desc{font-size:0.76rem;color:var(--muted);margin-top:0.38rem;line-height:1.6;}
+  @media(max-width:560px){.founder-card{flex-direction:column;text-align:center;}}
+  .year-block{margin-bottom:2rem;}
+  .year-label{font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);padding:0.26rem 0;border-bottom:1px solid rgba(201,168,76,0.12);margin-bottom:0.85rem;}
+  .counsellor-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0.75rem;}
+  @media(max-width:660px){.counsellor-row{grid-template-columns:1fr 1fr;}}
+  .counsellor-card{background:var(--navy-mid);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:0.95rem;text-align:center;transition:border-color 0.2s,transform 0.2s;position:relative;}
+  .counsellor-card:hover{border-color:rgba(201,168,76,0.2);transform:translateY(-2px);}
+  .counsellor-card.has-role{border-color:rgba(201,168,76,0.28);}
+  .role-tag{display:inline-block;background:rgba(201,168,76,0.11);color:var(--gold);font-size:0.58rem;font-weight:700;padding:0.09rem 0.48rem;border-radius:4px;margin-bottom:0.38rem;letter-spacing:0.04em;text-transform:uppercase;}
+  .c-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--navy-light),var(--navy));border:1.5px solid rgba(201,168,76,0.2);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:0.9rem;font-weight:700;color:var(--gold);margin:0 auto 0.5rem;}
+  .has-role .c-avatar{border-color:rgba(201,168,76,0.45);}
+  .c-name{font-size:0.78rem;font-weight:600;color:var(--white);margin-bottom:0.15rem;line-height:1.3;}
+  .c-gender{font-size:0.62rem;color:var(--muted);}
+  .c-bio{font-size:0.68rem;color:var(--muted);line-height:1.5;margin-bottom:0.2rem;min-height:0;}
+
+  /* COMPLAINTS */
+  #complaints{background:var(--navy-mid);}
+  .complaint-layout{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2.2rem;align-items:start;}
+  @media(max-width:700px){.complaint-layout{grid-template-columns:1fr;}}
+  .complaint-form-card{background:var(--navy);border:1px solid rgba(201,168,76,0.11);border-radius:16px;padding:1.75rem;}
+  .form-group{margin-bottom:1rem;}
+  label{display:block;font-size:0.74rem;font-weight:500;color:#a0aec0;margin-bottom:0.35rem;}
+  input,select,textarea{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:var(--white);font-family:var(--font-body);font-size:0.85rem;padding:0.62rem 0.82rem;border-radius:8px;outline:none;transition:border-color 0.2s;}
+  input:focus,select:focus,textarea:focus{border-color:var(--gold);background:rgba(201,168,76,0.04);}
+  select option{background:var(--navy-mid);}
+  textarea{resize:vertical;min-height:90px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;}
+  @media(max-width:480px){.form-row{grid-template-columns:1fr;}}
+  .submit-btn{width:100%;background:var(--gold);color:var(--navy);font-family:var(--font-body);font-weight:700;font-size:0.86rem;padding:0.8rem;border:none;border-radius:8px;cursor:pointer;transition:background 0.2s,transform 0.15s;margin-top:0.4rem;display:flex;align-items:center;justify-content:center;gap:0.5rem;}
+  .submit-btn:hover{background:var(--gold-light);transform:translateY(-1px);}
+  .toast{display:none;align-items:flex-start;gap:0.7rem;background:rgba(26,122,74,0.13);border:1px solid rgba(26,122,74,0.3);border-radius:10px;padding:0.85rem 1rem;margin-top:0.85rem;font-size:0.78rem;}
+  .toast.show{display:flex;animation:fadeUp 0.3s ease;}
+  .ref-box{font-family:monospace;font-size:0.9rem;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.26);color:var(--gold);padding:0.22rem 0.55rem;border-radius:6px;font-weight:700;letter-spacing:0.1em;}
+
+  /* complaint right panel */
+  .complaint-right>div{background:var(--navy);border:1px solid rgba(201,168,76,0.11);border-radius:14px;padding:1.4rem;margin-bottom:1rem;}
+  .complaint-right h3{font-family:var(--font-display);font-size:0.95rem;color:var(--white);margin-bottom:0.32rem;}
+  .complaint-right p{font-size:0.78rem;color:var(--muted);line-height:1.65;margin-bottom:0.85rem;}
+  .ref-input-row{display:flex;gap:0.6rem;}
+  .ref-input-row input{flex:1;}
+  .ref-input-row button{background:var(--navy-light);color:var(--gold);border:1px solid rgba(201,168,76,0.2);font-family:var(--font-body);font-weight:600;font-size:0.78rem;padding:0 0.85rem;border-radius:8px;cursor:pointer;white-space:nowrap;transition:background 0.2s;}
+  .ref-input-row button:hover{background:rgba(201,168,76,0.14);}
+  .flow-step{display:flex;gap:0.85rem;align-items:flex-start;padding:0.65rem 0;border-bottom:1px solid rgba(255,255,255,0.04);}
+  .flow-step:last-child{border-bottom:none;}
+  .flow-num{width:22px;height:22px;flex-shrink:0;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.64rem;font-weight:700;color:var(--gold);}
+  .flow-text strong{display:block;font-size:0.78rem;color:var(--white);margin-bottom:0.07rem;}
+  .flow-text span{font-size:0.72rem;color:var(--muted);line-height:1.55;}
+
+  /* routing badges */
+  .routing-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-top:0.75rem;}
+  .routing-chip{background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.11);border-radius:7px;padding:0.4rem 0.6rem;}
+  .routing-chip strong{display:block;font-size:0.72rem;color:var(--white);}
+  .routing-chip span{font-size:0.63rem;color:var(--muted);}
+
+  /* PUBLICATIONS */
+  #publications{background:var(--navy);}
+  .pub-layout{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2.2rem;align-items:start;}
+  @media(max-width:700px){.pub-layout{grid-template-columns:1fr;}}
+  .pub-form-card{background:var(--navy-mid);border:1px solid rgba(201,168,76,0.11);border-radius:14px;padding:1.6rem;}
+  .pub-form-card h3{font-family:var(--font-display);font-size:1rem;color:var(--gold);margin-bottom:0.85rem;}
+  .pub-categories{display:grid;grid-template-columns:1fr 1fr;gap:0.55rem;margin-top:0.85rem;}
+  .pub-cat{background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.12);border-radius:8px;padding:0.5rem 0.7rem;}
+  .pub-cat strong{display:block;font-size:0.75rem;color:var(--white);}
+  .pub-cat span{font-size:0.67rem;color:var(--muted);}
+
+  /* APPRECIATION */
+  #appreciation{background:var(--navy-mid);}
+  .appreciation-note{background:var(--navy);border:1px solid rgba(201,168,76,0.13);border-radius:14px;padding:1.5rem;margin-bottom:2rem;font-size:0.84rem;color:#b0bcd4;line-height:1.8;}
+  .appreciation-note strong{color:var(--white);}
+  .appr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem;}
+  .appr-card{background:var(--navy);border:1px solid rgba(201,168,76,0.11);border-radius:12px;padding:1.3rem;text-align:center;transition:border-color 0.2s,transform 0.2s;}
+  .appr-card:hover{border-color:rgba(201,168,76,0.28);transform:translateY(-2px);}
+  .appr-avatar{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--navy-light),var(--navy-mid));border:1.5px solid rgba(201,168,76,0.28);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--gold);margin:0 auto 0.7rem;}
+  .appr-name{font-size:0.85rem;font-weight:600;color:var(--white);margin-bottom:0.2rem;}
+  .appr-role{font-size:0.7rem;color:var(--gold);margin-bottom:0.4rem;}
+  .appr-desc{font-size:0.72rem;color:var(--muted);line-height:1.6;}
+  .appr-placeholder{background:rgba(201,168,76,0.04);border:1px dashed rgba(201,168,76,0.18);border-radius:12px;padding:1.5rem;text-align:center;color:var(--muted);font-size:0.8rem;line-height:1.7;}
+  .appr-placeholder strong{display:block;color:var(--gold);margin-bottom:0.3rem;font-size:0.85rem;}
+
+  /* ESCALATION */
+  #escalation{background:var(--navy);}
+  .trail-table-wrap{margin-top:2.2rem;overflow-x:auto;border-radius:12px;border:1px solid rgba(201,168,76,0.11);}
+  table{width:100%;border-collapse:collapse;font-size:0.78rem;}
+  thead{background:rgba(201,168,76,0.07);}
+  th{text-align:left;padding:0.72rem 1.05rem;font-size:0.66rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid rgba(201,168,76,0.13);}
+  td{padding:0.78rem 1.05rem;color:#b0bcd4;border-bottom:1px solid rgba(255,255,255,0.04);}
+  tbody tr:hover{background:rgba(255,255,255,0.02);}
+  tbody tr:last-child td{border-bottom:none;}
+  .status-badge{display:inline-block;font-size:0.63rem;font-weight:600;padding:0.13rem 0.48rem;border-radius:4px;text-transform:uppercase;letter-spacing:0.05em;}
+  .status-pending{background:rgba(201,168,76,0.13);color:var(--gold);}
+  .status-resolved{background:rgba(26,122,74,0.17);color:#4ade80;}
+  .status-review{background:rgba(74,144,226,0.13);color:#74b9e9;}
+
+  /* FOOTER */
+  footer{background:#060e1c;border-top:1px solid rgba(201,168,76,0.09);padding:2.75rem 2rem;text-align:center;}
+  .footer-logo-wrap{display:flex;align-items:center;justify-content:center;gap:0.75rem;margin-bottom:0.5rem;}
+  .footer-logo-img{width:36px;height:36px;border-radius:50%;opacity:0.85;}
+  .footer-logo{font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:var(--white);}
+  .footer-logo span{color:var(--gold);}
+  .footer-sub{font-size:0.74rem;color:var(--muted);margin-bottom:1.5rem;line-height:1.85;}
+  .footer-links{display:flex;gap:1.1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.4rem;}
+  .footer-links a{color:var(--muted);text-decoration:none;font-size:0.76rem;transition:color 0.2s;}
+  .footer-links a:hover{color:var(--gold);}
+  .footer-copy{font-size:0.68rem;color:rgba(138,148,171,0.4);line-height:1.7;}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
+  .reveal.visible{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">
+    <svg class="nav-logo-img" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gLOGO" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8c96b"/>
+      <stop offset="100%" stop-color="#c9a84c"/>
+    </linearGradient>
+  </defs>
+  <circle cx="512" cy="512" r="512" fill="#0a1628"/>
+  <circle cx="512" cy="512" r="498" fill="none" stroke="#c9a84c" stroke-width="7"/>
+  <circle cx="512" cy="512" r="484" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-opacity="0.35"/>
+  <path id="tpLOGO" d="M 95,512 A 417,417 0 0,1 929,512" fill="none"/>
+  <text font-family="Georgia,serif" font-size="44" font-weight="bold" letter-spacing="5.5" fill="#c9a84c">
+    <textPath href="#tpLOGO" startOffset="50%" text-anchor="middle">STUDENTS REPRESENTATIVE COUNCIL</textPath>
+  </text> 
+  <path id="bpLOGO" d="M 95,512 A 417,417 0 0,0 929,512" fill="none"/>
+  <text font-family="Georgia,serif" font-size="36" font-weight="600" letter-spacing="4" fill="#c9a84c">
+    <textPath href="#bpLOGO" startOffset="50%" text-anchor="middle">KMU · INSTITUTE OF MEDICAL SCIENCES · KOHAT</textPath>
+  </text>
+  <ellipse cx="512" cy="226" rx="18" ry="28" fill="#e8c96b" opacity="0.95"/>
+  <ellipse cx="512" cy="222" rx="10" ry="18" fill="#fff8e1" opacity="0.7"/>
+  <rect x="505" y="248" width="14" height="55" rx="4" fill="url(#gLOGO)"/>
+  <rect x="503" y="260" width="18" height="5" rx="2" fill="#0a1628" opacity="0.5"/>
+  <rect x="503" y="272" width="18" height="5" rx="2" fill="#0a1628" opacity="0.5"/>
+  <path d="M503,303 L509,318 L515,303" fill="url(#gLOGO)"/>
+  <line x1="340" y1="340" x2="672" y2="340" stroke="#c9a84c" stroke-width="1.5" stroke-opacity="0.4"/>
+  <circle cx="340" cy="340" r="3" fill="#c9a84c" opacity="0.6"/>
+  <circle cx="672" cy="340" r="3" fill="#c9a84c" opacity="0.6"/>
+  <circle cx="512" cy="340" r="3" fill="#c9a84c" opacity="0.6"/>
+  <path d="M350,380 Q430,365 512,372 L512,490 Q430,483 350,498 Z" fill="none" stroke="url(#gLOGO)" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M512,372 Q594,365 674,380 L674,498 Q594,483 512,490 Z" fill="none" stroke="url(#gLOGO)" stroke-width="5" stroke-linejoin="round"/>
+  <line x1="512" y1="372" x2="512" y2="490" stroke="url(#gLOGO)" stroke-width="6"/>
+  <line x1="370" y1="405" x2="500" y2="399" stroke="#c9a84c" stroke-width="2" stroke-opacity="0.45"/>
+  <line x1="370" y1="422" x2="500" y2="416" stroke="#c9a84c" stroke-width="2" stroke-opacity="0.45"/>
+  <line x1="370" y1="439" x2="500" y2="433" stroke="#c9a84c" stroke-width="2" stroke-opacity="0.45"/>
+  <line x1="370" y1="456" x2="500" y2="450" stroke="#c9a84c" stroke-width="2" stroke-opacity="0.45"/>
+  <line x1="524" y1="399" x2="654" y2="405" stroke="#c9a84c" stroke-width="2" stroke-opacity="0.45"/>
+  <line x1="524" y1="416" x2="654" y2="422" stroke="#c9a84c" stroke-width="2" stroke-opacity="0.45"/>
+  <line x1="524" y1="433" x2="654" y2="439" stroke="#c9a84c" stroke-width="2" stroke-opacity="0.45"/>
+  <line x1="524" y1="450" x2="654" y2="456" stroke="#c9a84c" stroke-width="2" stroke-opacity="0.45"/>
+  <rect x="508" y="498" width="8" height="140" rx="3" fill="url(#gLOGO)"/>
+  <path d="M512,515 C492,522 480,535 488,550 C496,565 516,568 520,582 C524,596 514,610 500,618 C490,624 480,626 476,638" fill="none" stroke="#c9a84c" stroke-width="7" stroke-linecap="round"/>
+  <path d="M512,515 C532,522 544,535 536,550 C528,565 508,568 504,582 C500,596 510,610 524,618 C534,624 544,626 548,638" fill="none" stroke="#c9a84c" stroke-width="7" stroke-linecap="round"/>
+  <ellipse cx="474" cy="642" rx="10" ry="7" fill="#c9a84c" transform="rotate(-25,474,642)"/>
+  <ellipse cx="550" cy="642" rx="10" ry="7" fill="#c9a84c" transform="rotate(25,550,642)"/>
+  <line x1="380" y1="668" x2="644" y2="668" stroke="#c9a84c" stroke-width="1.5" stroke-opacity="0.35"/>
+  <text x="512" y="754" text-anchor="middle" font-family="Georgia,serif" font-size="96" font-weight="900" letter-spacing="22" fill="url(#gLOGO)">SRC</text>
+  <text x="512" y="792" text-anchor="middle" font-family="Georgia,serif" font-size="26" letter-spacing="7" font-weight="600" fill="#c9a84c" opacity="0.65">K I M S</text>
+  <text x="512" y="826" text-anchor="middle" font-family="Georgia,serif" font-size="22" letter-spacing="5" fill="#c9a84c" opacity="0.5">EST. 2026</text>
+  <circle cx="512" cy="18" r="6" fill="#c9a84c"/>
+  <circle cx="512" cy="1006" r="6" fill="#c9a84c"/>
+  <circle cx="18" cy="512" r="6" fill="#c9a84c"/>
+  <circle cx="1006" cy="512" r="6" fill="#c9a84c"/>
+</svg>
+    <div class="nav-title">SRC <span>KIMS</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#story">Our Story</a></li>
+    <li><a href="#announcements">Announcements</a></li>
+    <li><a href="#structure">Role & Structure</a></li>
+    <li><a href="#counsellors">Counsellors</a></li>
+    <li><a href="#complaints">Complaints</a></li>
+  <li><a href="#escalation">Escalation Trail</a></li>
+  <li><a href="https://forms.gle/Bxu1ZCfr9xfhMHcY7" class="nav-cta" target="_blank" rel="noopener">Complaint Form</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu(this)" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <svg class="hero-logo" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gLOGO" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8c96b"/>
+      <stop offset="100%" stop-color="#c9a84c"/>
+    </linearGradient>
+  </defs>
+  <circle cx="512" cy="512" r="512" fill="#0a1628"/>
+  <circle cx="512" cy="512" r="498" fill="none" stroke="#c9a84c" stroke-width="7"/>
+  <circle cx="512" cy="512" r="484" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-opacity="0.35"/>
+  <path id="tpLOGO" d="M 95,512 A 417,417 0 0,1 929,512" fill="none"/>
+  <text font-family="Georgia,serif" font-size="44" font-weight="bold" letter-spacing="5.5" fill="#c9a84c">
+    <textPath href="#tpLOGO" startOffset="50%" text-anchor="middle">STUDENTS REPRESENTATIVE COUNCIL</textPath>
+  </text>
+  <path id="bpLOGO" d="M 95,512 A 417,417 0 0,0 929,512" fill="none"/>
+  <text font-family="Georgia,serif" font-size="36" font-weight="600" letter-spacing="4" fill="#c9a84c">
+    <textPath href="#bpLOGO" startOffset="50%" text-anchor="middle">KMU · INSTITUTE OF MEDICAL SCIENCES · KOHAT</textPath>
+  </text>
+  <ellipse cx="512" cy="226" rx="18" ry="28" fill="#e8c96b" opacity="0.95"/>
+  <ellipse cx="512" cy="222" rx="10" ry="18" fill="#fff8e1" opacity="0.7"/>
+  <rect x="505" y="248" width="14" height="55" rx="4" fill="url(#gLOGO)"/>
+  <rect x="503" y="260" width="18" height="5" rx="2" fill="#0a1628" opacity="0.5"/>
+  <rect x="503" y="272" width="18" height="5" rx="2" fill="#0a1628" opacity="0.5"/>
+  <path d="M503,303 L509,318 L515,303" fill="url(#gLOGO)"/>
+  <line x1="340" y1="340" x2="672" y2="340" stroke="#c9a84c" stroke-width="1.5" stroke-opacity="0.4"/>
+  <circle cx="340" cy="340" r="3" fill="#c9a84c" opacity="0.6"/>
+  <circle cx="672" cy="340" r="3" fill="#c9a84c" opacity="0.6"/>
+  <circle cx="512" cy="340" r="3" fill="#c9a84c" opacity="0.6"/>
+  <path d="M350,380 Q430,365 512,372 L512,490 Q430,483 350,498 Z" fill="none" stroke="url(#gLOGO)" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M512,372 Q594,365 674,380 L674,498 Q594,483 512,490 Z" fill="none" stroke="url(#gLOGO)" stroke-width="5" stroke-linejoin="round"/>
+  <line x1="512" y1="372" x2="512" y2="490" stroke="url(#gLOGO)" stroke-width="6"/>
+  <line x1="370" y1="405" x2="500" y2="399" stroke="#c9a84c" stroke-width="2" stroke-opacity="0.45"/>
+  <line x1="370" y1="422" x2="500" y2="416" stroke="#c9a84c" stroke-width="2" stroke-opacity="0.45"/>
+  <line x1="370" y1="439" x2="500" y2="433" stroke="#c9a84c" stroke-width="2" stroke-opacity="0.45"/>
+  <line x1="370" y1="456" x2="500" y2="450" stroke="#c9a84c" stroke-width="2" stroke-opacity="0.45"/>
+  <line x1="524" y1="399" x2="654" y2="405" stroke="#c9a84c" stroke-width="2" stroke-opacity="0.45"/>
+  <line x1="524" y1="416" x2="654" y2="422" stroke="#c9a84c" stroke-width="2" stroke-opacity="0.45"/>
+  <line x1="524" y1="433" x2="654" y2="439" stroke="#c9a84c" stroke-width="2" stroke-opacity="0.45"/>
+  <line x1="524" y1="450" x2="654" y2="456" stroke="#c9a84c" stroke-width="2" stroke-opacity="0.45"/>
+  <rect x="508" y="498" width="8" height="140" rx="3" fill="url(#gLOGO)"/>
+  <path d="M512,515 C492,522 480,535 488,550 C496,565 516,568 520,582 C524,596 514,610 500,618 C490,624 480,626 476,638" fill="none" stroke="#c9a84c" stroke-width="7" stroke-linecap="round"/>
+  <path d="M512,515 C532,522 544,535 536,550 C528,565 508,568 504,582 C500,596 510,610 524,618 C534,624 544,626 548,638" fill="none" stroke="#c9a84c" stroke-width="7" stroke-linecap="round"/>
+  <ellipse cx="474" cy="642" rx="10" ry="7" fill="#c9a84c" transform="rotate(-25,474,642)"/>
+  <ellipse cx="550" cy="642" rx="10" ry="7" fill="#c9a84c" transform="rotate(25,550,642)"/>
+  <line x1="380" y1="668" x2="644" y2="668" stroke="#c9a84c" stroke-width="1.5" stroke-opacity="0.35"/>
+  <text x="512" y="754" text-anchor="middle" font-family="Georgia,serif" font-size="96" font-weight="900" letter-spacing="22" fill="url(#gLOGO)">SRC</text>
+  <text x="512" y="792" text-anchor="middle" font-family="Georgia,serif" font-size="26" letter-spacing="7" font-weight="600" fill="#c9a84c" opacity="0.65">K I M S</text>
+  <text x="512" y="826" text-anchor="middle" font-family="Georgia,serif" font-size="22" letter-spacing="5" fill="#c9a84c" opacity="0.5">EST. 2026</text>
+  <circle cx="512" cy="18" r="6" fill="#c9a84c"/>
+  <circle cx="512" cy="1006" r="6" fill="#c9a84c"/>
+  <circle cx="18" cy="512" r="6" fill="#c9a84c"/>
+  <circle cx="1006" cy="512" r="6" fill="#c9a84c"/>
+</svg>
+    <div class="hero-badge">Officially Constituted · 9 April 2026 · First-Ever SRC at KIMS</div>
+    <h1>Your Voice.<br/><em>Formally Heard.</em></h1>
+    <p class="hero-sub">The Students Representative Council of KMU Institute of Medical Sciences, Kohat — the first-ever officially constituted student elected representative body at KIMS. Transparent, evidence-based, and accountable.</p>
+    <div class="hero-actions">
+      <a href="https://forms.gle/Bxu1ZCfr9xfhMHcY7" class="btn-primary" target="_blank" rel="noopener">Submit a Complaint</a>
+      <a href="#story" class="btn-outline">Our Story</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">1st Ever</div><div class="stat-label">Elected SRC at KIMS</div></div>
+      <div class="stat"><div class="stat-num">20</div><div class="stat-label">Elected Counsellors</div></div>
+      <div class="stat"><div class="stat-num">5</div><div class="stat-label">MBBS Years Represented</div></div>
+      <div class="stat"><div class="stat-num">600+</div><div class="stat-label">Students Represented</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="story">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Our Origin</p>
+      <h2 class="section-title">How the First-Ever SRC at KIMS Was Born</h2>
+      <p class="section-sub">A student-driven initiative — proposed, built, and delivered from within — through persistence, collective will, and the support of an administration that believed in it.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="story-grid reveal">
+      <div>
+        <div class="story-text">
+          <p>The SRC at KIMS did not emerge from the top down. It began with a single student — <strong>Muhammad Sadat Khan</strong>, then in 4th Year MBBS — who identified that the existing CR and GR system, while valuable for classroom coordination, lacked the scope and institutional standing to represent students where decisions are actually made.</p><p style="font-size:0.9rem;color:var(--light);line-height:1.85;margin-bottom:1.2rem;">The constitution of the SRC marked a defining moment: for the first time, <strong style="color:var(--white);">students were formally recognised as the principal stakeholders of this institution</strong>. Not passive participants — but elected voices, with formal weight, formal channels, and the institutional standing to represent their peers with respect and accountability.</p>
+      
+          <p>On <strong>6 May 2025</strong>, Muhammad Sadat formally submitted a written SRC proposal to the administration. What followed was months of consultations, formal meetings, revisions, and trust-building — involving students, faculty, and senior administration working collectively toward a shared goal.</p>
+          <p>Once shared with all CRs and GRs across every MBBS year, the proposal became a <strong>whole-student initiative</strong>. Every class representative stood behind it unanimously. Three formal meetings with CRs and GRs were held, alongside multiple meetings between Muhammad Sadat and the administration.</p>
+          <p><strong>Dr. Fawad Iqbal, Incharge Department of Medical Education</strong>, played a pivotal bridging role — facilitating communication between students and the Vice Principal Academics at every critical stage. <strong>Prof. Dr. Arshad Farzooq, Vice Principal Academics</strong>, accepted the proposal, worked through it carefully, and brought it to <strong>Prof. Dr. Musarrat Jabeen, Principal</strong>, who gave it her full institutional support.</p>
+          <p>A dedicated committee for the SRC was formed on <strong>6 January 2026</strong>. They worked alongside students to produce a Terms of Reference acceptable to both students and administration. The first Office Order was signed by the Principal on <strong></strong>. Interviews were held on <strong>2nd and 3rd March 2026</strong>. On <strong>9 April 2026</strong>, the Vice Principal Academics issued the final official notification — <strong>the SRC KIMS 2026 is formally and fully constituted.</strong></p>
+        </div>
+
+        <div class="tribute-box">
+          <h3>A Note of Gratitude — Setting a Standard for KMU</h3>
+          <p>The SRC extends its deepest gratitude to <strong>Prof. Dr. Musarrat Jabeen, Principal KMU-IMS</strong>, whose approval and support made this milestone possible. By constituting the first-ever formal student representation body at KIMS, she has demonstrated that <strong>KMU Institute of Medical Sciences stands as a role model</strong> among all constituent and affiliated institutes of Khyber Medical University — championing student representation in alignment with PMDC guidelines and KMU's own governance framework. This decision sets a standard we hope every affiliated institute will follow.</p>
+        </div>
+      <div style="background:var(--navy-mid);border:1px solid rgba(201,168,76,0.2);border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:1.5rem 1.75rem;margin:1.5rem 0;">
+        <div style="font-size:0.68rem;color:var(--gold);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.6rem;">Official Notification</div>
+        <div style="font-size:0.95rem;font-family:var(--font-display);color:var(--white);font-weight:600;margin-bottom:0.5rem;">Office Order No. 313/KMU-IMS/Estt/A-21/2026</div>
+        <div style="font-size:0.82rem;color:var(--light);line-height:1.75;">Issued by Prof. Dr. Arshad Farzooq, Vice Principal Academics, KMU-IMS Kohat &mdash; 9 April 2026. This notification formally constituted the Students Representative Council at KMU Institute of Medical Sciences, Kohat, designating Muhammad Sadat as President, Muhammad Taimoor as Vice President, and Hiba Abeer as General Secretary, with 20 elected Counsellors representing all five MBBS years.</div>
+      </div>
+
+        <div class="ack-box">
+          <h3>The Committee for SRC — KIMS</h3>
+          <p style="font-size:0.78rem;color:var(--muted);margin-bottom:0.8rem;">Formed on 6 January 2026. This committee drafted the Terms of Reference alongside students, conducted formal interviews on 2–3 March 2026, supervised elections, and issued the final official notification on 9 April 2026. The SRC acknowledges each member with deep appreciation.</p>
+          <div class="ack-person">
+            <div class="ack-icon">A</div>
+            <div><div class="ack-name">Prof. Dr. Arshad Farzooq</div><div class="ack-role">Vice Principal Academics · KMU-IMS Kohat · Committee Lead</div><div class="ack-desc">Accepted the SRC proposal, steered it through institutional channels, co-drafted the Terms of Reference with students, chaired the entire committee process, and signed the final official notification on 9 April 2026. His academic leadership was foundational to this achievement.</div></div>
+          </div>
+          <div class="ack-person">
+            <div class="ack-icon">H</div>
+            <div><div class="ack-name">Prof. Dr. Muhammad Haris Ramzan</div><div class="ack-role">HOD Physiology · KMU-IMS Kohat · Committee Member</div><div class="ack-desc">Provided valuable academic perspective and institutional guidance as a committee member — contributing to a governance framework that reflects both professional standards and student realities at KIMS.</div></div>
+          </div>
+          <div class="ack-person">
+            <div class="ack-icon">T</div>
+            <div><div class="ack-name">Assoc. Prof. Dr. Tahira Atta</div><div class="ack-role">HOD Pathology · KMU-IMS Kohat · Committee Member</div><div class="ack-desc">Contributed generously of her time and expertise throughout the ToR drafting and selection process. Her support and constructive engagement were greatly valued by the student body.</div></div>
+          </div>
+          <div class="ack-person">
+            <div class="ack-icon">F</div>
+            <div><div class="ack-name">Dr. Fawad Iqbal</div><div class="ack-role">Incharge, Dept. of Medical Education · KMU-IMS Kohat · Committee Member</div><div class="ack-desc">Served as the essential bridge between students and the Vice Principal Academics from the very first meeting in May 2025 through to final constitution. His facilitation, patience, and genuine investment in student welfare were indispensable at every stage.</div></div>
+          </div>
+        </div>
+
+        <div class="cr-box">
+          <h3>The CRs and GRs Who Made This a Student Movement</h3>
+          <p>When the SRC proposal was shared, every Class Representative and Girls' Representative across all MBBS years endorsed it unanimously — transforming a single student's initiative into a collective institutional movement. Their solidarity and participation across three formal meetings gave the proposal its institutional weight. They are part of this history.</p>
+          <div class="cr-sessions">
+            <div class="cr-session-tag"><span>Session 2025</span> — CRs & GRs</div>
+            <div class="cr-session-tag"><span>Session 2026</span> — CRs & GRs</div>
+          </div>
+          <p style="font-size:0.73rem;color:var(--muted);margin-top:0.75rem;margin-bottom:0;">Individual names will be added here upon confirmation.</p>
+        </div>
+      </div>
+
+      <div>
+        <!-- Announcement cards replacing recreated official orders -->
+        <div style="background:var(--navy);border:1px solid rgba(201,168,76,0.18);border-radius:14px;padding:1.5rem;margin-bottom:1rem;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light));"></div>
+          <div style="font-size:0.65rem;color:var(--gold);font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.5rem;">Official Notification · 9 April 2026</div>
+          <div style="font-size:0.92rem;font-family:var(--font-display);font-weight:700;color:var(--white);margin-bottom:0.6rem;">SRC KIMS 2026 — Final Constitution</div>
+          <div style="font-size:0.8rem;color:#b0bcd4;line-height:1.75;">Signed by Vice Principal Academics Prof. Dr. Arshad Farzooq. The following candidates are hereby declared successful after interviews and elections: <strong style="color:var(--white)">Muhammad Sadat (President)</strong>, <strong style="color:var(--white)">Muhammad Taimoor (Vice President)</strong>, Alia Noor Khan, Hameeda Qamar (Final Year); Shakirullah Afridi, Muhammad Rizwan, <strong style="color:var(--white)">Hiba Abeer (General Secretary)</strong>, Manahel Jehanzeb (4th Year); Muhammad Shamikh, Hamza Rehman, Mehroon Kashif, Salwa Sani (3rd Year); Saad Azam, Talha Rizwan, Arooba Anwar, Hudaibia Zeb (2nd Year); Danyal Ahmad, Muhammad Hassnain, Hadia Hamayun, Aleena Ifthikhar (1st Year). President directed to convene the first SRC meeting at the earliest.</div>
+          <div style="margin-top:0.85rem;font-size:0.72rem;color:var(--muted);">C.C.: Principal KMU-IMS · Incharge DME · Incharge Student Affairs · Office Copy</div>
+        </div>
+
+        <div style="background:var(--navy);border:1px solid rgba(201,168,76,0.13);border-radius:14px;padding:1.5rem;margin-bottom:1rem;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent);"></div>
+          <div style="font-size:0.65rem;color:var(--gold);font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.5rem;">Official Notification · </div>
+          <div style="font-size:0.92rem;font-family:var(--font-display);font-weight:700;color:var(--white);margin-bottom:0.6rem;">SRC Approved — Selection Process Initiated</div>
+          <div style="font-size:0.8rem;color:#b0bcd4;line-height:1.75;">Signed by Principal Prof. Dr. Musarrat Jabeen. With the approval of the Students' Representative Council (SRC), the concerned committee shall select two male and two female students from each class, strictly adhering to the established guidelines.</div>
+          <div style="margin-top:0.85rem;font-size:0.72rem;color:var(--muted);">C.C.: Prof. Dr. Arshad Farzooq (VP Academics) · Prof. Dr. Muhammad Haris Ramzan · Assoc. Prof. Dr. Tahira Atta · Dr. Fawad Iqbal (Incharge DME) · Office Copy</div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot key">—</div><div><div class="tl-date">6 May 2025</div><div class="tl-title">SRC Proposal Formally Submitted</div><div class="tl-body">Muhammad Sadat Khan (4th Year MBBS) submits a formal written SRC proposal to the administration.</div></div></div>
+          <div class="tl-item"><div class="tl-dot">—</div><div><div class="tl-date">7 May 2025</div><div class="tl-title">First CR/GR Meeting</div><div class="tl-body">All CRs and GRs, 1st to Final Year. Facilitated by <strong>Dr. Fawad Iqbal (DME)</strong>. Strong support expressed.</div></div></div>
+          <div class="tl-item"><div class="tl-dot">—</div><div><div class="tl-date">14 May 2025</div><div class="tl-title">Second CR/GR Meeting — Unanimous Endorsement</div><div class="tl-body">All CRs and GRs endorsed every clause. Proposal became a whole-student initiative.</div></div></div>
+          <div class="tl-item"><div class="tl-dot">—</div><div><div class="tl-date">18 Sep 2025</div><div class="tl-title">Third CR/GR Meeting — Administration Approval Confirmed</div><div class="tl-body">Approval by <strong>VP Academics Prof. Dr. Arshad Farzooq</strong> and Principal confirmed.</div></div></div>
+          <div class="tl-item"><div class="tl-dot key">—</div><div><div class="tl-date">6 January 2026</div><div class="tl-title">SRC Committee Formed</div><div class="tl-body">VP Academics, HOD Physiology, HOD Pathology, Incharge DME — drafting Terms of Reference alongside students.</div></div></div>
+          <div class="tl-item"><div class="tl-dot key">—</div><div><div class="tl-date"></div><div class="tl-title">First Official Notification — SRC Approved</div><div class="tl-body">Principal Prof. Dr. Musarrat Jabeen signs formal approval. Applications invited via class announcements and WhatsApp groups.</div></div></div>
+          <div class="tl-item"><div class="tl-dot">—</div><div><div class="tl-date">2–3 March 2026</div><div class="tl-title">Interviews & Elections</div><div class="tl-body">Committee conducted formal interviews. Shortlisted candidates contested supervised class elections via confidential ballot.</div></div></div>
+          <div class="tl-item"><div class="tl-dot key">—</div><div><div class="tl-date">9 April 2026</div><div class="tl-title">Final Notification — SRC KIMS 2026 Constituted</div><div class="tl-body">VP Academics signs official notification. Muhammad Sadat as President, Muhammad Taimoor as Vice President, and Hiba Abeer as General Secretary.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+      <div style="background:var(--navy-mid);border:1px solid rgba(201,168,76,0.13);border-radius:14px;padding:1.5rem;margin-top:1.5rem;">
+        <div style="font-size:0.7rem;color:var(--gold);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1rem;">Class Representatives &amp; Girls' Representatives — Session 2025</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
+          <div style="font-size:0.78rem;color:var(--light);padding:0.3rem 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="color:var(--gold);font-weight:600;">Final Year CR:</span> Muhammad Haseeb</div>
+          <div style="font-size:0.78rem;color:var(--light);padding:0.3rem 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="color:var(--gold);font-weight:600;">Final Year GR:</span> Mahrukh Sayed</div>
+          <div style="font-size:0.78rem;color:var(--light);padding:0.3rem 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="color:var(--gold);font-weight:600;">4th Year CR:</span> Shams Ur Rehman</div>
+          <div style="font-size:0.78rem;color:var(--light);padding:0.3rem 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="color:var(--gold);font-weight:600;">4th Year GR:</span> Sana Ehsan Yousafzai</div>
+          <div style="font-size:0.78rem;color:var(--light);padding:0.3rem 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="color:var(--gold);font-weight:600;">3rd Year CR:</span> Shakirullah Afridi</div>
+          <div style="font-size:0.78rem;color:var(--light);padding:0.3rem 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="color:var(--gold);font-weight:600;">3rd Year GR:</span> Angaza Eman</div>
+          <div style="font-size:0.78rem;color:var(--light);padding:0.3rem 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="color:var(--gold);font-weight:600;">2nd Year CR:</span> Muhammad Uzair</div>
+          <div style="font-size:0.78rem;color:var(--light);padding:0.3rem 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="color:var(--gold);font-weight:600;">2nd Year GR:</span> Zoobia Khan</div>
+          <div style="font-size:0.78rem;color:var(--light);padding:0.3rem 0;"><span style="color:var(--gold);font-weight:600;">1st Year GR:</span> Arooba Batool</div>
+          <div style="font-size:0.78rem;color:var(--muted);padding:0.3rem 0;font-style:italic;">1st Year CR: To be updated</div>
+        </div>
+        <div style="margin-top:0.75rem;font-size:0.72rem;color:var(--muted);line-height:1.6;">These Class Representatives and Girls' Representatives from Session 2025 provided the foundational student backing that made the SRC possible. They participated in the early consultative meetings and endorsed the SRC proposal — their collective voice gave the initiative its institutional weight.</div>
+      </div>
+    </section>
+
+<!-- ANNOUNCEMENTS -->
+<section id="announcements">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Official Notice Board</p>
+      <h2 class="section-title">Announcements</h2>
+      <p class="section-sub">The official communication record of SRC KIMS — permanently archived for transparency and institutional memory.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="notice-grid reveal">
+      <div class="notice-card" style="text-align:center;padding:2rem;border:1px dashed rgba(201,168,76,0.2);">
+        <div style="font-size:0.8rem;color:var(--muted);line-height:1.8;">Announcements will be published here as the council progresses.<br>Check back for updates.</div>
+      </div>
+    </div>
+      <div class="notice-card"><span class="notice-tag tag-official">Directive</span><div class="notice-date">9 April 2026</div><div class="notice-title">First SRC Meeting — To Be Convened</div><div class="notice-body">President SRC 2026 directed to arrange the inaugural meeting as per SRC KIMS Guidelines and KMU-IMS code of conduct. Proceedings to be shared with the Principal.</div></div>
+      <div class="notice-card"><span class="notice-tag tag-event">Milestone</span><div class="notice-date"></div><div class="notice-title">SRC Approved by Principal</div><div class="notice-body">Principal Prof. Dr. Musarrat Jabeen signs the formal approval of the SRC, calling for the selection process to begin. A landmark moment for KIMS.</div></div>
+      <div class="notice-card"><span class="notice-tag tag-info">Process</span><div class="notice-date">2–3 March 2026</div><div class="notice-title">Interviews & Elections Completed</div><div class="notice-body">The selection followed a rigorous two-stage process. First, class-level elections were held across all five MBBS years — students directly elected their representatives by secret ballot. This was followed by formal interviews conducted by an independent student-trusted committee, free from administrative influence. Both stages together produced the council's elected Counsellors — true representatives chosen by their peers.</div></div>
+      <div class="notice-card"><span class="notice-tag tag-official">Active</span><div class="notice-date">Ongoing</div><div class="notice-title">Complaint Portal — Operational</div><div class="notice-body">Students may now submit complaints and suggestions through this portal. All submissions are logged with a unique reference number and reviewed by the SRC within 48 hours.</div></div>
+      <div class="notice-card"><span class="notice-tag tag-event">History</span><div class="notice-date">6 May 2025 – 9 April 2026</div><div class="notice-title">11 Months: Proposal to Constitution</div><div class="notice-body">From formal proposal submission to final official notification — 11 months of consultation, meetings, drafting, elections, and institutional process. A landmark for KIMS students.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STRUCTURE -->
+<section id="structure">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Governance Framework</p>
+      <h2 class="section-title">Role, Authority & Structure of the SRC</h2>
+      <p class="section-sub">The SRC is the official student representative body and institutional umbrella for student-led activity at KIMS — operating under formally approved Terms of Reference.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="structure-intro reveal">
+      <p>The SRC is the <strong>formally elected, student-nominated body of KMU Institute of Medical Sciences, Kohat</strong> — formally constituted, institutionally recognised, and mandated to represent all students across academic, administrative, clinical, and co-curricular domains.</p>
+      <p>The SRC promotes <strong>academic excellence, professional identity, and student leadership</strong>. It facilitates structured communication between students and administration, supports student wellbeing across all dimensions, and organises academic, cultural, outreach, and professional activities on behalf of the student body.</p>
+      <p><strong>CRs and GRs work in active coordination with the SRC</strong> — bringing class-level concerns into a single, unified, documented channel. Together they ensure every student concern reaches the right authority through proper, evidence-based process. Nothing is left informal or unrecorded.</p>
+      <p>Official SRC communications are issued exclusively through the <strong>President or General Secretary</strong>. All escalations are formally documented and traceable. The SRC operates with full institutional recognition and the authority to formally engage every level of the KIMS and KMU administration.</p>
+    </div>
+    <div class="structure-grid reveal">
+      <div class="structure-card">
+        <h3>Official Cabinet — SRC 2026</h3>
+        <div class="cabinet-cards">
+          <div class="cabinet-role"><div class="role-title">President</div><div class="role-name">Muhammad Sadat</div><div class="role-desc">Final Year · Leadership, official representation, administration liaison</div></div>
+          <div class="cabinet-role"><div class="role-title">Vice President</div><div class="role-name">Muhammad Taimoor</div><div class="role-desc">Final Year · Supports President, manages records and correspondence</div></div>
+          <div class="cabinet-role"><div class="role-title">General Secretary</div><div class="role-name">Hiba Abeer</div><div class="role-desc">4th Year · Coordinates activities, archives minutes, manages communication</div></div>
+        </div>
+        
+        <div class="tor-item"><div class="tor-dot"></div><div class="tor-text"><strong>Meetings & Minutes</strong><span>Monthly meetings with documented Minutes of Meeting. Formal recommendations are shared with the Principal through appropriate channels. Emergency meetings as required. Quorum: 50% of members.</span></div></div>
+        <div class="tor-item"><div class="tor-dot"></div><div class="tor-text"><strong>Term of Office</strong><span>One academic year. Structured handover at end of each term. Ceases upon graduation, withdrawal, suspension, or resignation.</span></div></div>
+      </div>
+      <div>
+        <div class="structure-card" style="margin-bottom:1.5rem;">
+          <h3>Authority — Elected, Accountable, Student-Led</h3>
+          <div class="tor-item"><div class="tor-dot"></div><div class="tor-text"><strong>Elected Student Body — Nominated by Students</strong><span>The SRC is the only formally constituted, elected student representative body at KIMS. Every Counsellor was chosen by their peers through a transparent two-stage process: class elections by secret ballot, followed by formal interviews. This is a body of students, for students — with the authority to formally engage every level of KIMS and KMU administration.</span></div></div>
+          <div class="tor-item"><div class="tor-dot"></div><div class="tor-text"><strong>Formal Engagement at All Levels</strong><span>The SRC formally engages the Department of Medical Education, VP Academics, VP Administration, Principal, and — where appropriate — the KMU Academic Council. All engagements are documented and evidence-based.</span></div></div>
+          <div class="tor-item"><div class="tor-dot"></div><div class="tor-text"><strong>Academic Excellence &amp; Medical Education</strong><span>The SRC actively promotes academic excellence, supports student engagement with medical education policy, and provides structured feedback to faculty and the Department of Medical Education.</span></div></div>
+          <div class="tor-item"><div class="tor-dot"></div><div class="tor-text"><strong>Student Wellbeing — All Dimensions</strong><span>Promotes a safe, respectful, and inclusive environment. Supports students across academic, psychological, and social dimensions throughout their MBBS journey at KIMS.</span></div></div>
+          <div class="tor-item"><div class="tor-dot"></div><div class="tor-text"><strong>Academic, Cultural &amp; Professional Activities</strong><span>The SRC organises and supports academic, community outreach, cultural, and professional activities for the student body — building a well-rounded medical professional identity at KIMS.</span></div></div>
+          <div class="tor-item"><div class="tor-dot"></div><div class="tor-text"><strong>Apolitical &amp; Independent</strong><span>Fully independent from political, sectarian, or external influence. The SRC operates strictly in the collective interest of students and the institution — with no personal or external agenda.</span></div></div>
+        </div>
+        <div class="structure-card">
+          <h3>Standing Committees Under SRC</h3>
+          <p style="font-size:0.8rem;color:var(--muted);margin-bottom:0.85rem;line-height:1.7;">The SRC is the institutional umbrella for all student societies and standing committees at KIMS. Committee heads submit periodic activity reports through the General Secretary.</p>
+          <div class="committees-grid">
+            <div class="committee-chip">
+              <strong>SRC Standing Committee — Academic Affairs &amp; Medical Education</strong>
+              <span>Examinations, teaching quality, curriculum, internal marks, research workshops, medical education policy and DME-related matters</span>
+              <div style="margin-top:0.5rem;font-size:0.67rem;color:var(--gold);letter-spacing:0.03em;"><strong>Male Co-Chairperson:</strong> Muhammad Taimoor &nbsp;|&nbsp; <strong>Female Co-Chairperson:</strong> Manahel Jehanzeb</div>
+              <div style="margin-top:0.2rem;font-size:0.65rem;color:var(--light);">Members: Hameeda Qamar · Muhammad Rizwan · Muhammad Shamikh · Talha Rizwan · Hadia Hamayun · Danyal Ahmad · Muhammad Hassnain · Aleena Ifthikhar</div>
+              <div style="margin-top:0.35rem;font-size:0.63rem;color:var(--muted);">Via: DME → VP Academics → Principal → KMU Academic Council</div>
+            </div>
+            <div class="committee-chip">
+              <strong>SRC Standing Committee — Campus Administration &amp; Student Services</strong>
+              <span>Hostels, classrooms, transport, water supply, Wi-Fi, library, facilities and all campus administrative concerns</span>
+              <div style="margin-top:0.5rem;font-size:0.67rem;color:var(--gold);letter-spacing:0.03em;"><strong>Female Co-Chairperson:</strong> Hameeda Qamar &nbsp;|&nbsp; <strong>Male Co-Chairperson:</strong> Muhammad Rizwan</div>
+              <div style="margin-top:0.2rem;font-size:0.65rem;color:var(--light);">Members: Hamza Rehman · Salwa Sani · Mehroon Kashif · Hudaibia Zeb · Arooba Anwar · Danyal Ahmad · Saad Azam · Aleena Ifthikhar</div>
+              <div style="margin-top:0.35rem;font-size:0.63rem;color:var(--muted);">Via: VP Administration → Principal</div>
+            </div>
+            <div class="committee-chip">
+              <strong>SRC Standing Committee — Clinical &amp; Hospital Affairs</strong>
+              <span>Ward rounds, clinical rotations, hospital teaching, HODs and Incharge Wards of all clinical departments</span>
+              <div style="margin-top:0.5rem;font-size:0.67rem;color:var(--gold);letter-spacing:0.03em;"><strong>Male Co-Chairperson:</strong> Muhammad Sadat &nbsp;|&nbsp; <strong>Female Co-Chairperson:</strong> Hiba Abeer</div>
+              <div style="margin-top:0.2rem;font-size:0.65rem;color:var(--light);">Members: Alia Noor Khan · Shakirullah Afridi · Manahel Jehanzeb · Hamza Rehman · Muhammad Shamikh · Salwa Sani</div>
+              <div style="margin-top:0.35rem;font-size:0.63rem;color:var(--muted);">Via: Incharge Ward / HOD → Incharge Hospital Affairs → VP Academics → Principal</div>
+            </div>
+            <div class="committee-chip">
+              <strong>SRC Standing Committee — Student Engagement &amp; Societies</strong>
+              <span>Representing all five KIMS student societies and coordinating co-curricular student activities</span>
+              <div style="margin-top:0.5rem;font-size:0.67rem;color:var(--gold);letter-spacing:0.03em;"><strong>Male Co-Chairperson:</strong> Shakirullah Afridi &nbsp;|&nbsp; <strong>Female Co-Chairperson:</strong> Alia Noor Khan</div>
+              <div style="margin-top:0.2rem;font-size:0.65rem;color:var(--light);">Members: Hameeda Qamar · Muhammad Rizwan · Hamza Rehman · Muhammad Shamikh · Mehroon Kashif · Arooba Anwar · Saad Azam · Hadia Hamayun</div>
+              <div style="margin-top:0.35rem;font-size:0.63rem;color:var(--muted);">Via: Incharge Societies / VP Administration → Principal</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COUNSELLORS -->
+
+  <!-- ═══ VISION SECTION ═══ -->
+  <section id="vision" style="background:var(--navy-mid);padding:5rem 0;">
+    <div class="container">
+
+      <p class="section-label reveal">Our Vision</p>
+      <h2 class="section-title reveal">A Revolution in the Making</h2>
+      <p class="section-sub reveal">The SRC is not simply here to register complaints. We are here to change the system from within — through documentation, persistence, and a student body that refuses to be unheard. Every student at KIMS is a stakeholder. Every voice will be channelled. Every issue will be followed through.</p>
+
+      <!-- OPENING STATEMENT -->
+      <div style="background:linear-gradient(135deg,rgba(201,168,76,0.1),rgba(201,168,76,0.03));border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:1.5rem 1.75rem;margin:2.5rem 0;" class="reveal">
+        <p style="font-size:1.1rem;font-family:var(--font-display);color:var(--white);font-weight:600;line-height:1.6;margin-bottom:0.6rem;">"We are not just representatives. We are the voice of every student — through a formal, documented system where every concern counts."</p>
+        <p style="font-size:0.82rem;color:var(--muted);line-height:1.75;">CRs and GRs remain the first point of contact in their classes. The SRC works alongside them as a unified body — channelling concerns upward, tracking resolutions, and holding the process accountable. Together, we are one voice.</p>
+      </div>
+
+      <!-- WHAT WE ARE WORKING ON NOW -->
+      <div class="reveal" style="margin-bottom:2rem;">
+        <h3 style="font-family:var(--font-display);font-size:1.2rem;color:var(--gold);margin-bottom:1.2rem;font-weight:600;">What Our Committees Are Working On Right Now</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+
+          <div style="background:var(--navy);border:1px solid rgba(201,168,76,0.13);border-radius:12px;padding:1.25rem;">
+            <div style="font-size:0.68rem;color:var(--gold);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.7rem;">Campus Administration &amp; Student Services</div>
+            <ul style="list-style:none;padding:0;margin:0;">
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">Morning and evening transport — scheduling and reliability</li>
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">Classroom infrastructure, projectors and building maintenance</li>
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">Wi-Fi restoration and connectivity across campus</li>
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">Library extension and access timings</li>
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">Girls' Hostel — internet, water quality, food, electrical appliances, sanitation</li>
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;">Boys' Hostel — actively pursuing a formal accommodation solution with the administration for students currently in external accommodation</li>
+            </ul>
+          </div>
+
+          <div style="background:var(--navy);border:1px solid rgba(201,168,76,0.13);border-radius:12px;padding:1.25rem;">
+            <div style="font-size:0.68rem;color:var(--gold);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.7rem;">Academic Affairs &amp; Medical Education</div>
+            <ul style="list-style:none;padding:0;margin:0;">
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">Standardised internal examinations, OSPEs and block assessments</li>
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">Mid-block attendance transparency for all students</li>
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">Faculty feedback after internal assessments</li>
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">Online class attendance — particularly for students from remote areas</li>
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;">Society funds — working toward timely release and transparent allocation</li>
+            </ul>
+          </div>
+
+          <div style="background:var(--navy);border:1px solid rgba(201,168,76,0.13);border-radius:12px;padding:1.25rem;">
+            <div style="font-size:0.68rem;color:var(--gold);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.7rem;">Clinical &amp; Hospital Affairs</div>
+            <ul style="list-style:none;padding:0;margin:0;">
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">Ward rotation scheduling and clinical timetable adjustments</li>
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">Impact of online sessions on ward-based clinical learning</li>
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;">Teaching continuity and structured learning in hospital departments</li>
+            </ul>
+          </div>
+
+          <div style="background:var(--navy);border:1px solid rgba(201,168,76,0.13);border-radius:12px;padding:1.25rem;">
+            <div style="font-size:0.68rem;color:var(--gold);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.7rem;">Student Engagement &amp; Societies</div>
+            <ul style="list-style:none;padding:0;margin:0;">
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">Coordinating all five KIMS student societies under a unified platform</li>
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">Society fund release and resource allocation</li>
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;">Co-curricular activities, events and student engagement initiatives</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- WHERE WE ARE GOING — LONG TERM VISION -->
+      <div class="reveal" style="margin-bottom:2rem;">
+        <h3 style="font-family:var(--font-display);font-size:1.2rem;color:var(--gold);margin-bottom:1.2rem;font-weight:600;">Where We Are Going — The Bigger Picture</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+
+          <div style="background:var(--navy);border:1px solid rgba(201,168,76,0.13);border-radius:12px;padding:1.25rem;">
+            <div style="font-size:0.68rem;color:var(--gold);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.7rem;">Academic Transformation</div>
+            <ul style="list-style:none;padding:0;margin:0;">
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">E-learning platforms and a digital library accessible to all students</li>
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">A structured, calendar-based workshop series — coordinated with DME, led by specialised faculty, and informed by student-suggested topics</li>
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">Specialised workshops by renowned professors from partner institutions — physical or online</li>
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;">Exchange programmes with national and international medical colleges</li>
+            </ul>
+          </div>
+
+          <div style="background:var(--navy);border:1px solid rgba(201,168,76,0.13);border-radius:12px;padding:1.25rem;">
+            <div style="font-size:0.68rem;color:var(--gold);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.7rem;">Research &amp; Innovation</div>
+            <ul style="list-style:none;padding:0;margin:0;">
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">A fully functional Research Cell at KIMS — structured, protocol-driven, and modelled on Pakistan's leading research institutions</li>
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">Publication pathways for KIMS students in the KMU Journal</li>
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">Research innovation and incubation support for student-led projects</li>
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;">AI in medical education — awareness, curriculum integration and mentorship</li>
+            </ul>
+          </div>
+
+          <div style="background:var(--navy);border:1px solid rgba(201,168,76,0.13);border-radius:12px;padding:1.25rem;">
+            <div style="font-size:0.68rem;color:var(--gold);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.7rem;">Student Development</div>
+            <ul style="list-style:none;padding:0;margin:0;">
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">Clinical skills labs, simulation labs and hands-on training facilities</li>
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">Psychological support and counselling centre — confidential, protocol-driven, student-friendly</li>
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">Career counselling and residency programme guidance across all academic years</li>
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;">Leadership, communication and language skill courses for well-rounded professional formation</li>
+            </ul>
+          </div>
+
+          <div style="background:var(--navy);border:1px solid rgba(201,168,76,0.13);border-radius:12px;padding:1.25rem;">
+            <div style="font-size:0.68rem;color:var(--gold);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.7rem;">Global &amp; Institutional Reach</div>
+            <ul style="list-style:none;padding:0;margin:0;">
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">KMU-endorsed appreciation letters for outstanding academic, research and co-curricular performance — to strengthen student CVs</li>
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">Certified clinical training programmes affiliated with internationally recognised institutions</li>
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">Annual medical festival, research competitions and scientific exhibitions</li>
+              <li style="font-size:0.8rem;color:var(--light);padding:0.28rem 0;">Community outreach, national and international partnerships for scholarships, training and clinical programmes</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- HOW WE STAY ACCOUNTABLE -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:2rem;" class="reveal">
+
+        <div style="background:var(--navy);border:1px solid rgba(201,168,76,0.13);border-radius:12px;padding:1.25rem;text-align:center;">
+          <div style="font-size:1.6rem;font-family:var(--font-display);font-weight:700;color:var(--gold);margin-bottom:0.35rem;">Monthly</div>
+          <div style="font-size:0.78rem;color:var(--white);font-weight:600;margin-bottom:0.3rem;">Progress Reports</div>
+          <div style="font-size:0.73rem;color:var(--muted);line-height:1.6;">Every month, students will receive a formal update on resolved issues, ongoing concerns and next steps.</div>
+        </div>
+
+        <div style="background:var(--navy);border:1px solid rgba(201,168,76,0.13);border-radius:12px;padding:1.25rem;text-align:center;">
+          <div style="font-size:1.6rem;font-family:var(--font-display);font-weight:700;color:var(--gold);margin-bottom:0.35rem;">Monthly</div>
+          <div style="font-size:0.78rem;color:var(--white);font-weight:600;margin-bottom:0.3rem;">Class Visits</div>
+          <div style="font-size:0.73rem;color:var(--muted);line-height:1.6;">Counsellors visit their classes regularly — open floor, no filter, every concern logged and followed through.</div>
+        </div>
+
+        <div style="background:var(--navy);border:1px solid rgba(201,168,76,0.13);border-radius:12px;padding:1.25rem;text-align:center;">
+          <div style="font-size:1.6rem;font-family:var(--font-display);font-weight:700;color:var(--gold);margin-bottom:0.35rem;">Every Meeting</div>
+          <div style="font-size:0.78rem;color:var(--white);font-weight:600;margin-bottom:0.3rem;">CR &amp; GR Participation</div>
+          <div style="font-size:0.73rem;color:var(--muted);line-height:1.6;">Class Representatives and Girls' Representatives attend every SRC meeting — one unified, structured student voice.</div>
+        </div>
+
+      </div>
+
+      <!-- CLOSING STATEMENT -->
+      <div style="background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(201,168,76,0.02));border:1px solid rgba(201,168,76,0.2);border-radius:14px;padding:2rem;text-align:center;" class="reveal">
+        <p style="font-size:1.15rem;font-family:var(--font-display);color:var(--white);font-weight:700;margin-bottom:0.6rem;line-height:1.5;">This is not just a council. It is a movement.</p>
+        <p style="font-size:0.85rem;color:var(--light);line-height:1.85;max-width:700px;margin:0 auto 1.25rem;">A movement for every student who ever felt their concern went unheard. For every issue that was raised informally and disappeared. For every KIMS student who deserves better — and who now has a formal, elected body working to make that happen. We are your voice. We are accountable to you. And we are just getting started.</p>
+        <div style="display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;">
+          <div style="text-align:center;">
+            <div style="font-size:0.68rem;color:var(--gold);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.2rem;">Follow Us</div>
+            <div style="font-size:0.8rem;color:var(--light);">Instagram &amp; Social Media — Coming Soon</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:0.68rem;color:var(--gold);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.2rem;">Submit a Concern</div>
+            <div style="font-size:0.8rem;color:var(--light);">Use the complaint portal below — every submission is logged</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:0.68rem;color:var(--gold);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.2rem;">Speak to Your Counsellor</div>
+            <div style="font-size:0.8rem;color:var(--light);">Your class has two male and two female counsellors — elected by you</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+<section id="counsellors">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Meet the Council</p>
+      <h2 class="section-title">SRC KIMS 2026 — Elected Counsellors</h2>
+      <p class="section-sub">Officially declared on 9 April 2026 by VP Academics Prof. Dr. Arshad Farzooq. Elected through formal interviews and supervised class elections via confidential ballot.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="reveal">
+
+      <div class="year-block">
+        <div class="year-label">Final Year MBBS — Counsellors</div>
+        <div class="counsellor-row">
+          <div class="counsellor-card has-role"><div class="role-tag">President SRC 2026</div><div class="c-avatar">MS</div><div class="c-name">Muhammad Sadat Khan</div><div class="c-bio" style="font-size:0.68rem;color:var(--light);line-height:1.6;margin-top:0.3rem;">
+          Founder &amp; President SRC KIMS 2026. Elected Class Representative from mid-1st to mid-3rd Year MBBS — received Letter of Appreciation for his service as CR. Active in student welfare and advocacy throughout his academic journey. District Chairman, International Human Rights Organisation (SDG 4 &amp; 5). Global Youth Ambassador, Theirworld — working on gender equality and children's education projects. Author of a Research Proposal Guide for KMU-IMS students (2025). Author of a Letter to the Editor (LTE) in a peer-reviewed journal. Currently contributing to an AI ethnographic research project in medicine under supervisors from MIT and Harvard Medical School. Principal Investigator on two ethics-approved research projects at REC KIMS on AI in medical education. Working on an additional collaborative research project currently under ethics approval.
+        </div><div class="c-gender">Male</div></div>
+          <div class="counsellor-card has-role"><div class="role-tag">Vice President SRC 2026</div><div class="c-avatar">MT</div><div class="c-name">Muhammad Taimoor Khan</div><div class="c-bio" style="font-size:0.68rem;color:var(--muted);font-style:italic;">Introduction to be added.</div><div class="c-gender">Male</div></div>
+          <div class="counsellor-card"><div class="c-avatar">AN</div><div class="c-name">Alia Noor Khan</div><div class="c-bio" style="font-size:0.68rem;color:var(--muted);font-style:italic;">Introduction to be added.</div><div class="c-gender">Female</div></div>
+          <div class="counsellor-card"><div class="c-avatar">HQ</div><div class="c-name">Hameeda Qamar</div><div class="c-bio" style="font-size:0.68rem;color:var(--muted);font-style:italic;">Introduction to be added.</div><div class="c-gender">Female</div></div>
+        </div>
+      </div>
+      <div class="year-block">
+        <div class="year-label">4th Year MBBS — Counsellors</div>
+        <div class="counsellor-row">
+          <div class="counsellor-card"><div class="c-avatar">SA</div><div class="c-name">Shakirullah Afridi</div><div class="c-bio" style="font-size:0.68rem;color:var(--muted);font-style:italic;">Introduction to be added.</div><div class="c-gender">Male</div></div>
+          <div class="counsellor-card"><div class="c-avatar">MR</div><div class="c-name">Muhammad Rizwan</div><div class="c-bio" style="font-size:0.68rem;color:var(--muted);font-style:italic;">Introduction to be added.</div><div class="c-gender">Male</div></div>
+          <div class="counsellor-card has-role"><div class="role-tag">General Secretary SRC 2026</div><div class="c-avatar">HA</div><div class="c-name">Hiba Abeer</div><div class="c-bio" style="font-size:0.68rem;color:var(--muted);font-style:italic;">Introduction to be added.</div><div class="c-gender">Female</div></div>
+          <div class="counsellor-card"><div class="c-avatar">MJ</div><div class="c-name">Manahel Jehanzeb</div><div class="c-bio" style="font-size:0.68rem;color:var(--muted);font-style:italic;">Introduction to be added.</div><div class="c-gender">Female</div></div>
+        </div>
+      </div>
+      <div class="year-block">
+        <div class="year-label">3rd Year MBBS — Counsellors</div>
+        <div class="counsellor-row">
+          <div class="counsellor-card"><div class="c-avatar">MS</div><div class="c-name">Muhammad Shamikh</div><div class="c-bio" style="font-size:0.68rem;color:var(--muted);font-style:italic;">Introduction to be added.</div><div class="c-gender">Male</div></div>
+          <div class="counsellor-card"><div class="c-avatar">HR</div><div class="c-name">Hamza Rehman</div><div class="c-bio" style="font-size:0.68rem;color:var(--muted);font-style:italic;">Introduction to be added.</div><div class="c-gender">Male</div></div>
+          <div class="counsellor-card"><div class="c-avatar">MK</div><div class="c-name">Mehroon Kashif</div><div class="c-bio" style="font-size:0.68rem;color:var(--muted);font-style:italic;">Introduction to be added.</div><div class="c-gender">Female</div></div>
+          <div class="counsellor-card"><div class="c-avatar">SS</div><div class="c-name">Salwa Sani</div><div class="c-bio" style="font-size:0.68rem;color:var(--muted);font-style:italic;">Introduction to be added.</div><div class="c-gender">Female</div></div>
+        </div>
+      </div>
+      <div class="year-block">
+        <div class="year-label">2nd Year MBBS — Counsellors</div>
+        <div class="counsellor-row">
+          <div class="counsellor-card"><div class="c-avatar">SZ</div><div class="c-name">Saad Azam</div><div class="c-bio" style="font-size:0.68rem;color:var(--muted);font-style:italic;">Introduction to be added.</div><div class="c-gender">Male</div></div>
+          <div class="counsellor-card"><div class="c-avatar">TR</div><div class="c-name">Talha Rizwan</div><div class="c-bio" style="font-size:0.68rem;color:var(--muted);font-style:italic;">Introduction to be added.</div><div class="c-gender">Male</div></div>
+          <div class="counsellor-card"><div class="c-avatar">Ar</div><div class="c-name">Arooba Anwar</div><div class="c-bio" style="font-size:0.68rem;color:var(--muted);font-style:italic;">Introduction to be added.</div><div class="c-gender">Female</div></div>
+          <div class="counsellor-card"><div class="c-avatar">HZ</div><div class="c-name">Hudaibia Zeb</div><div class="c-bio" style="font-size:0.68rem;color:var(--muted);font-style:italic;">Introduction to be added.</div><div class="c-gender">Female</div></div>
+        </div>
+      </div>
+      <div class="year-block">
+        <div class="year-label">1st Year MBBS — Counsellors</div>
+        <div class="counsellor-row">
+          <div class="counsellor-card"><div class="c-avatar">DA</div><div class="c-name">Danyal Ahmad</div><div class="c-bio" style="font-size:0.68rem;color:var(--muted);font-style:italic;">Introduction to be added.</div><div class="c-gender">Male</div></div>
+          <div class="counsellor-card"><div class="c-avatar">MH</div><div class="c-name">Muhammad Hassnain</div><div class="c-bio" style="font-size:0.68rem;color:var(--muted);font-style:italic;">Introduction to be added.</div><div class="c-gender">Male</div></div>
+          <div class="counsellor-card"><div class="c-avatar">HH</div><div class="c-name">Hadia Hamayun</div><div class="c-bio" style="font-size:0.68rem;color:var(--muted);font-style:italic;">Introduction to be added.</div><div class="c-gender">Female</div></div>
+          <div class="counsellor-card"><div class="c-avatar">AI</div><div class="c-name">Aleena Ifthikhar</div><div class="c-bio" style="font-size:0.68rem;color:var(--muted);font-style:italic;">Introduction to be added.</div><div class="c-gender">Female</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPLAINTS -->
+<section id="complaints">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Student Communication Channel</p>
+      <h2 class="section-title">Submit a Complaint or Suggestion</h2>
+      <p class="section-sub">All complaints are received by the SRC. The SRC reviews, assigns to the relevant standing committee, and escalates to administration with full documentation where required. Every step is tracked and evidence-based.</p>
+      <div class="divider"></div>
+      <div style="margin: 2rem 0; text-align: center;">
+        <a href="https://forms.gle/Bxu1ZCfr9xfhMHcY7" class="btn-primary" target="_blank" rel="noopener" style="font-size:1.1rem;padding:1rem 2.2rem;display:inline-block;">Submit Complaint via Google Form</a>
+        <div style="margin-top:0.7rem;font-size:0.85rem;color:var(--muted);">(External link — opens in new tab)</div>
+      </div>
+    </div>
+    <!-- ...existing code... -->
+
+      <div class="complaint-right">
+        <div>
+          <h3>Track Your Complaint</h3>
+          <p>Enter your reference number to see the current status and routing of your submission.</p>
+          <div class="ref-input-row"><input type="text" id="track-input" placeholder="e.g. SRC-2026-014"/><button onclick="trackComplaint()">Track</button></div>
+          <div id="track-result"></div>
+        </div>
+        <div>
+          <h3>How Complaints Are Handled</h3>
+          <p>Every complaint goes through a structured, documented process — no informal channels.</p>
+          <div class="flow-step"><div class="flow-num">1</div><div class="flow-text"><strong>You Submit</strong><span>Your complaint is received by the SRC and logged with a unique reference number.</span></div></div>
+          <div class="flow-step"><div class="flow-num">2</div><div class="flow-text"><strong>SRC Reviews — 48 hrs</strong><span>The SRC Complaint Committee reviews and routes it to the relevant standing committee based on domain.</span></div></div>
+          <div class="flow-step"><div class="flow-num">3</div><div class="flow-text"><strong>Committee Acts</strong><span>The relevant committee works on resolution internally. If escalation is needed, SRC prepares a formal, documented escalation to the appropriate administrative office.</span></div></div>
+          <div class="flow-step"><div class="flow-num">4</div><div class="flow-text"><strong>Escalation if Required</strong><span>SRC escalates formally to VP Academics, VP Administration, Principal, or relevant office — with full evidence and reference number.</span></div></div>
+          <div class="flow-step"><div class="flow-num">5</div><div class="flow-text"><strong>You Are Notified</strong><span>Resolution or update communicated back through your reference number. The entire trail is permanently documented.</span></div></div>
+        </div>
+        <div>
+          <h3>Complaint Routing by Domain</h3>
+          <p>Complaints are automatically routed to the relevant SRC committee based on the domain you select.</p>
+          <div class="routing-grid">
+            <div class="routing-chip">
+              <strong>Academic Affairs &amp; Medical Education</strong>
+              <span>SRC Standing Committee — Academic Affairs &amp; Medical Education</span>
+              <div style="font-size:0.62rem;color:var(--gold);margin-top:0.22rem;">DME → VP Academics → Principal → KMU Academic Council</div>
+            </div>
+            <div class="routing-chip">
+              <strong>Campus Administration &amp; Student Services</strong>
+              <span>SRC Standing Committee — Campus Administration &amp; Student Services</span>
+              <div style="font-size:0.62rem;color:var(--gold);margin-top:0.22rem;">VP Administration → Principal</div>
+            </div>
+            <div class="routing-chip">
+              <strong>Clinical &amp; Hospital Affairs</strong>
+              <span>SRC Standing Committee — Clinical &amp; Hospital Affairs</span>
+              <div style="font-size:0.62rem;color:var(--gold);margin-top:0.22rem;">Incharge Ward / HOD → Incharge Hospital Affairs → VP Academics → Principal</div>
+            </div>
+            <div class="routing-chip">
+              <strong>Student Engagement &amp; Societies</strong>
+              <span>SRC Standing Committee — Student Engagement &amp; Societies</span>
+              <div style="font-size:0.62rem;color:var(--gold);margin-top:0.22rem;">Incharge Societies / VP Administration → Principal</div>
+            </div>
+          </div>
+        </div>
+            <div class="routing-chip">
+              <strong>Campus Administration &amp; Student Services</strong>
+              <span>SRC Standing Committee — Campus Administration &amp; Student Services</span>
+              <div style="font-size:0.62rem;color:var(--gold);margin-top:0.22rem;">VP Administration → Principal</div>
+            </div>
+            <div class="routing-chip">
+              <strong>Clinical &amp; Hospital Affairs</strong>
+              <span>SRC Standing Committee — Clinical &amp; Hospital Affairs</span>
+              <div style="font-size:0.62rem;color:var(--gold);margin-top:0.22rem;">Incharge Ward / HOD → Incharge Hospital Affairs → VP Academics → Principal</div>
+            </div>
+            <div class="routing-chip">
+              <strong>Student Engagement &amp; Societies</strong>
+              <span>SRC Standing Committee — Student Engagement &amp; Societies</span>
+              <div style="font-size:0.62rem;color:var(--gold);margin-top:0.22rem;">Incharge Societies / VP Administration → Principal</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+
+<!-- APPRECIATION -->
+
+<!-- ESCALATION TRAIL -->
+<section id="escalation">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Accountability & Evidence</p>
+      <h2 class="section-title">Escalation Trail</h2>
+      <p class="section-sub">A transparent public log of all formal escalations made by the SRC to administration. Every entry is documented, referenced, and evidence-backed — the SRC's accountability record.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="trail-table-wrap reveal">
+      <table>
+        <thead><tr><th>Reference</th><th>Issue</th><th>Escalated To</th><th>Date Submitted</th><th>Date Escalated</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td><strong style="color:var(--gold)">SRC-2026-001</strong></td><td>SRC Constitution — Proposal to Approval</td><td>Principal & VP Academics</td><td>6 May 2025</td><td>18 Sep 2025</td><td><span class="status-badge status-resolved">Resolved</span></td></tr>
+          <tr><td><strong style="color:var(--gold)">SRC-2026-002</strong></td><td>Terms of Reference — Drafting & Finalization</td><td>SRC Committee</td><td>6 Jan 2026</td><td>6 Jan 2026</td><td><span class="status-badge status-resolved">Resolved</span></td></tr>
+          <tr><td><strong style="color:var(--gold)">SRC-2026-003</strong></td><td>Interviews & Elections Process</td><td>SRC Committee</td><td>20 Feb 2026</td><td>2 Mar 2026</td><td><span class="status-badge status-resolved">Resolved</span></td></tr>
+          <tr><td><strong style="color:var(--gold)">SRC-2026-004</strong></td><td>Official Designation Notification</td><td>VP Academics</td><td>Mar 2026</td><td>9 Apr 2026</td><td><span class="status-badge status-resolved">Resolved</span></td></tr>
+          <tr><td><strong style="color:var(--gold)">SRC-2026-005</strong></td><td>Official ID Cards for Elected Counsellors</td><td>VP Administration</td><td>Apr 2026</td><td>Ongoing</td><td><span class="status-badge status-review">Under Review</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:0.85rem;font-size:0.74rem;color:var(--muted);">This trail will populate with all formal student complaints escalated to administration as the SRC becomes fully operational. Each entry represents a documented, evidence-backed communication between SRC and KIMS administration.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo-wrap">
+    <svg class="footer-logo-img" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gLOGO" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8c96b"/>
+      <stop offset="100%" stop-color="#c9a84c"/>
+    </linearGradient>
+  </defs>
+  <circle cx="512" cy="512" r="512" fill="#0a1628"/>
+  <circle cx="512" cy="512" r="498" fill="none" stroke="#c9a84c" stroke-width="7"/>
+  <circle cx="512" cy="512" r="484" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-opacity="0.35"/>
+  <path id="tpLOGO" d="M 95,512 A 417,417 0 0,1 929,512" fill="none"/>
+  <text font-family="Georgia,serif" font-size="44" font-weight="bold" letter-spacing="5.5" fill="#c9a84c">
+    <textPath href="#tpLOGO" startOffset="50%" text-anchor="middle">STUDENTS REPRESENTATIVE COUNCIL</textPath>
+  </text>
+  <path id="bpLOGO" d="M 95,512 A 417,417 0 0,0 929,512" fill="none"/>
+  <text font-family="Georgia,serif" font-size="36" font-weight="600" letter-spacing="4" fill="#c9a84c">
+    <textPath href="#bpLOGO" startOffset="50%" text-anchor="middle">KMU · INSTITUTE OF MEDICAL SCIENCES · KOHAT</textPath>
+  </text>
+  <ellipse cx="512" cy="226" rx="18" ry="28" fill="#e8c96b" opacity="0.95"/>
+  <ellipse cx="512" cy="222" rx="10" ry="18" fill="#fff8e1" opacity="0.7"/>
+  <rect x="505" y="248" width="14" height="55" rx="4" fill="url(#gLOGO)"/>
+  <rect x="503" y="260" width="18" height="5" rx="2" fill="#0a1628" opacity="0.5"/>
+  <rect x="503" y="272" width="18" height="5" rx="2" fill="#0a1628" opacity="0.5"/>
+  <path d="M503,303 L509,318 L515,303" fill="url(#gLOGO)"/>
+  <line x1="340" y1="340" x2="672" y2="340" stroke="#c9a84c" stroke-width="1.5" stroke-opacity="0.4"/>
+  <circle cx="340" cy="340" r="3" fill="#c9a84c" opacity="0.6"/>
+  <circle cx="672" cy="340" r="3" fill="#c9a84c" opacity="0.6"/>
+  <circle cx="512" cy="340" r="3" fill="#c9a84c" opacity="0.6"/>
+  <path d="M350,380 Q430,365 512,372 L512,490 Q430,483 350,498 Z" fill="none" stroke="url(#gLOGO)" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M512,372 Q594,365 674,380 L674,498 Q594,483 512,490 Z" fill="none" stroke="url(#gLOGO)" stroke-width="5" stroke-linejoin="round"/>
+  <line x1="512" y1="372" x2="512" y2="490" stroke="url(#gLOGO)" stroke-width="6"/>
+  <line x1="370" y1="405" x2="500" y2="399" stroke="#c9a84c" stroke-width="2" stroke-opacity="0.45"/>
+  <line x1="370" y1="422" x2="500" y2="416" stroke="#c9a84c" stroke-width="2" stroke-opacity="0.45"/>
+  <line x1="370" y1="439" x2="500" y2="433" stroke="#c9a84c" stroke-width="2" stroke-opacity="0.45"/>
+  <line x1="370" y1="456" x2="500" y2="450" stroke="#c9a84c" stroke-width="2" stroke-opacity="0.45"/>
+  <line x1="524" y1="399" x2="654" y2="405" stroke="#c9a84c" stroke-width="2" stroke-opacity="0.45"/>
+  <line x1="524" y1="416" x2="654" y2="422" stroke="#c9a84c" stroke-width="2" stroke-opacity="0.45"/>
+  <line x1="524" y1="433" x2="654" y2="439" stroke="#c9a84c" stroke-width="2" stroke-opacity="0.45"/>
+  <line x1="524" y1="450" x2="654" y2="456" stroke="#c9a84c" stroke-width="2" stroke-opacity="0.45"/>
+  <rect x="508" y="498" width="8" height="140" rx="3" fill="url(#gLOGO)"/>
+  <path d="M512,515 C492,522 480,535 488,550 C496,565 516,568 520,582 C524,596 514,610 500,618 C490,624 480,626 476,638" fill="none" stroke="#c9a84c" stroke-width="7" stroke-linecap="round"/>
+  <path d="M512,515 C532,522 544,535 536,550 C528,565 508,568 504,582 C500,596 510,610 524,618 C534,624 544,626 548,638" fill="none" stroke="#c9a84c" stroke-width="7" stroke-linecap="round"/>
+  <ellipse cx="474" cy="642" rx="10" ry="7" fill="#c9a84c" transform="rotate(-25,474,642)"/>
+  <ellipse cx="550" cy="642" rx="10" ry="7" fill="#c9a84c" transform="rotate(25,550,642)"/>
+  <line x1="380" y1="668" x2="644" y2="668" stroke="#c9a84c" stroke-width="1.5" stroke-opacity="0.35"/>
+  <text x="512" y="754" text-anchor="middle" font-family="Georgia,serif" font-size="96" font-weight="900" letter-spacing="22" fill="url(#gLOGO)">SRC</text>
+  <text x="512" y="792" text-anchor="middle" font-family="Georgia,serif" font-size="26" letter-spacing="7" font-weight="600" fill="#c9a84c" opacity="0.65">K I M S</text>
+  <text x="512" y="826" text-anchor="middle" font-family="Georgia,serif" font-size="22" letter-spacing="5" fill="#c9a84c" opacity="0.5">EST. 2026</text>
+  <circle cx="512" cy="18" r="6" fill="#c9a84c"/>
+  <circle cx="512" cy="1006" r="6" fill="#c9a84c"/>
+  <circle cx="18" cy="512" r="6" fill="#c9a84c"/>
+  <circle cx="1006" cy="512" r="6" fill="#c9a84c"/>
+</svg>
+    <div class="footer-logo">Students Representative Council — <span>KIMS Kohat</span></div>
+  </div>
+  <div class="footer-sub">KMU Institute of Medical Sciences · Affiliated with Khyber Medical University, Peshawar<br/>Constituted by official notification dated 9 April 2026 · Signed by VP Academics Prof. Dr. Arshad Farzooq<br/>First-ever officially constituted SRC at KIMS — Proposed 6 May 2025 · Constituted 9 April 2026</div>
+  <div class="footer-links">
+    <a href="#story">Our Story</a><a href="#announcements">Announcements</a><a href="#structure">Role & Structure</a>
+    <a href="#counsellors">Counsellors</a><a href="#complaints">Submit Complaint</a>
+    <a href="#escalation">Escalation Trail</a>
+  </div>
+  <div class="footer-copy">© 2026 Students Representative Council, KMU Institute of Medical Sciences, Kohat. All rights reserved.</div>
+</footer>
+
+<script>
+  const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.06});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  const routingMap={
+    academic:"Academic Affairs & Medical Education Committee — Via: DME → VP Academics → Principal → KMU Academic Council",
+    campus:"Campus Administration & Student Services Committee — Via: VP Administration → Principal",
+    clinical:"Clinical & Hospital Affairs Committee — Via: Incharge Ward / HOD → Incharge Hospital Affairs → VP Academics → Principal",
+    societies:"Student Engagement & Societies Committee — Via: Incharge Societies / VP Administration → Principal",
+    suggestion:"SRC Cabinet — forwarded to the relevant standing committee for consideration",
+    other:"SRC Cabinet — reviewed and routed to the appropriate standing committee"
+  };
+
+  function updateRouting(){
+    const val=document.getElementById('f-domain').value;
+    const box=document.getElementById('routing-info');
+    const txt=document.getElementById('routing-text');
+    if(val&&routingMap[val]){txt.textContent=routingMap[val];box.style.display='block';}
+    else{box.style.display='none';}
+  }
+
+  function generateRef(){return `SRC-2026-0${Math.floor(Math.random()*900)+100}`;}
+
+  function submitComplaint(){
+    const name=document.getElementById('f-name').value.trim();
+    const subject=document.getElementById('f-subject').value.trim();
+    const body=document.getElementById('f-body').value.trim();
+    if(!name||!subject||!body){alert('Please fill in your name, subject, and description.');return;}
+    const ref=generateRef();
+    document.getElementById('ref-num').textContent=ref;
+    document.getElementById('toast').classList.add('show');
+    ['f-name','f-roll','f-subject','f-body'].forEach(id=>document.getElementById(id).value='');
+    ['f-batch','f-domain','f-conf'].forEach(id=>document.getElementById(id).selectedIndex=0);
+    document.getElementById('routing-info').style.display='none';
+  }
+
+  const samples={
+    'SRC-2026-001':{status:'Resolved',color:'#4ade80',detail:'SRC constitution approved by VP Academics and Principal. Final notification issued 9 April 2026.'},
+    'SRC-2026-004':{status:'Resolved',color:'#4ade80',detail:'Designations confirmed: President — Muhammad Sadat, VP — Muhammad Taimoor, Gen. Secretary — Hiba Abeer.'},
+    'SRC-2026-005':{status:'Under Review',color:'#74b9e9',detail:'Request for official ID cards for elected Counsellors under review by VP Administration.'},
+  };
+
+  function trackComplaint(){
+    const val=document.getElementById('track-input').value.trim().toUpperCase();
+    const el=document.getElementById('track-result');
+    if(!val)return;
+    const found=samples[val];
+    if(found){el.innerHTML=`<div style="margin-top:0.8rem;padding:0.85rem;border-radius:8px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);"><div style="font-size:0.66rem;color:var(--muted);margin-bottom:0.2rem;">Ref: <strong style="color:var(--gold)">${val}</strong></div><div style="font-size:0.8rem;font-weight:600;color:${found.color};margin-bottom:0.32rem;">Status: ${found.status}</div><div style="font-size:0.74rem;color:#b0bcd4;line-height:1.6;">${found.detail}</div></div>`;}
+    else{el.innerHTML=`<div style="margin-top:0.8rem;padding:0.85rem;border-radius:8px;background:rgba(192,57,43,0.07);border:1px solid rgba(192,57,43,0.15);font-size:0.76rem;color:#e57373;">No record found for <strong>${val}</strong>. Please check your reference number.</div>`;}
+  }
+
+  function toggleMenu(btn){
+    const nav=document.querySelector('.nav-links');
+    const open=nav.style.display==='flex';
+    if(!open){Object.assign(nav.style,{display:'flex',flexDirection:'column',position:'absolute',top:'64px',left:'0',right:'0',background:'rgba(10,22,40,0.98)',padding:'1rem 2rem',gap:'0.4rem',borderBottom:'1px solid rgba(201,168,76,0.14)'});}
+    else{nav.style.display='none';}
+  }
+</script>
+</body>
+</html>
